@@ -1,0 +1,38 @@
+# Plantilla de mapeo GreenClaim — PRUEBA contable (factura/SAP).
+#
+# Mapea `ejemplos/contable_prueba.csv`. Mismos energéticos que la operativa pero
+# `fuente: contable`. OJO: a propósito NO incluye fuel_oil, para que esa línea
+# quede en estado `pendiente` (falta el lado contable) y se vea ese caso en la demo.
+
+empresa: planta_prueba
+
+lectura:
+  header: 0
+
+identidad:
+  fecha: fecha_factura
+
+energeticos:
+  - energetico: gas_natural
+    tipo: fosil
+    unidad: Nm3
+    fuente: contable
+    columnas: [gas_natural_nm3]
+
+  - energetico: diesel
+    tipo: fosil
+    unidad: lt
+    fuente: contable
+    columnas: [diesel_lt]
+
+  - energetico: biomasa
+    tipo: biogenico
+    unidad: ton
+    fuente: contable
+    columnas: [biomasa_ton]
+
+  - energetico: electricidad_comprada
+    tipo: electricidad_red
+    unidad: kWh
+    fuente: contable
+    columnas: [electricidad_kwh]

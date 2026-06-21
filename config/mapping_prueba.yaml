@@ -1,0 +1,45 @@
+# Plantilla de mapeo GreenClaim — PRUEBA (para probar la carga en la app).
+#
+# Mapea el archivo OPERATIVO de prueba `ejemplos/operativo_prueba.csv` (lecturas
+# de sensores/PI). Pareja contable: `mapping_prueba_contable.yaml`.
+# Pensada para que la carga NO tire error de columnas: el CSV trae exactamente
+# las columnas que esta plantilla declara.
+
+empresa: planta_prueba
+
+lectura:
+  header: 0        # encabezados en la primera fila
+
+identidad:
+  fecha: fecha     # columna de fecha en el CSV
+
+energeticos:
+  - energetico: gas_natural
+    tipo: fosil
+    unidad: Nm3
+    fuente: operativo
+    columnas: [gas_natural_nm3]
+
+  - energetico: diesel
+    tipo: fosil
+    unidad: lt
+    fuente: operativo
+    columnas: [diesel_lt]
+
+  - energetico: fuel_oil
+    tipo: fosil
+    unidad: lt
+    fuente: operativo
+    columnas: [fuel_oil_lt]
+
+  - energetico: biomasa
+    tipo: biogenico
+    unidad: ton
+    fuente: operativo
+    columnas: [biomasa_ton]
+
+  - energetico: electricidad_comprada
+    tipo: electricidad_red
+    unidad: kWh
+    fuente: operativo
+    columnas: [electricidad_kwh]
