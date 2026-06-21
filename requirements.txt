@@ -1,0 +1,8 @@
+# Dependencias de la app desplegada (motor + UI).
+# Streamlit Community Cloud instala desde este archivo: por eso incluye streamlit
+# (fijado a la versión con la que se desarrolló la UI). El motor sigue siendo
+# headless en el código: nunca importa streamlit.
+pandas>=2.0
+openpyxl>=3.1
+pyyaml>=6.0
+streamlit>=1.58

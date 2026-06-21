@@ -1,0 +1,37 @@
+# Tema de la UI GreenClaim (verde, energía/ambiental). Solo config nativa, sin
+# CSS. Ajustable libremente; no afecta al motor headless.
+[theme]
+base = "light"
+primaryColor = "#15803D"               # verde marca (contrasta con texto blanco)
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F3F7F3"   # gris con leve tinte verde
+textColor = "#16261B"
+linkColor = "#15803D"
+borderColor = "#DCE7DC"
+showWidgetBorder = true
+showSidebarBorder = true
+baseRadius = "8px"
+buttonRadius = "8px"
+linkUnderline = false
+
+font = "'Inter':https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+baseFontSize = 14
+headingFontWeights = [600, 600, 600, 600, 500, 500]
+
+# Paleta semántica alineada con los estados (badges/tablas).
+greenColor = "#15803D"
+redColor = "#DC2626"
+orangeColor = "#D97706"
+yellowColor = "#CA8A04"
+blueColor = "#2563EB"
+grayColor = "#64748B"
+
+dataframeBorderColor = "#DCE7DC"
+dataframeHeaderBackgroundColor = "#F3F7F3"
+
+[theme.sidebar]
+backgroundColor = "#F3F7F3"
+secondaryBackgroundColor = "#E8F0E8"
+textColor = "#16261B"
+borderColor = "#DCE7DC"
+primaryColor = "#15803D"

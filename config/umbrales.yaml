@@ -1,0 +1,17 @@
+# Umbrales de brecha por energético (paso 4) — PROVISIONALES Y CONFIGURABLES.
+#
+# NO son cifras oficiales: son valores de arranque a validar con especialistas
+# ambientales. Se expresan en porcentaje (%) y se comparan contra |brecha_pct|.
+# Un energético con brecha dentro del umbral queda 'cuadrado'; si lo supera,
+# 'desviacion'. La brecha se evalúa en unidad nativa.
+
+# Umbral por energético del núcleo.
+energeticos:
+  electricidad_comprada: 2.0
+  gas_natural: 4.0
+  diesel: 5.0
+  fuel_oil: 5.0
+  biomasa: 7.0
+
+# Umbral de respaldo para energéticos sin valor declarado arriba (opcional).
+default: 5.0

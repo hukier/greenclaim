@@ -1,0 +1,39 @@
+# Factores de la capa derivada (paso 5) — PROVISIONALES Y NO OFICIALES.
+#
+# ¡ATENCIÓN! Estos números son marcadores de posición para que el motor corra;
+# NO son factores oficiales. Deben validarse con especialistas ambientales
+# antes de usarse en cualquier reporte real.
+#
+# Por energético:
+#   factor_gj  : GJ por unidad nativa (Nm3 / lt / ton / kWh).
+#   factor_co2 : tCO2eq por GJ  (base energética; emisiones = energia_gj * factor_co2).
+#   biogenico  : true para combustibles biogénicos (no suman al total fósil).
+#
+# Capa OPCIONAL: si un energético no figura aquí, se usa `default` (factor 0).
+
+energeticos:
+  gas_natural:
+    factor_gj: 0.03934      # GJ/Nm3   (PROVISIONAL)
+    factor_co2: 0.0561      # tCO2eq/GJ (PROVISIONAL)
+
+  diesel:
+    factor_gj: 0.0383       # GJ/lt    (PROVISIONAL)
+    factor_co2: 0.0741      # tCO2eq/GJ (PROVISIONAL)
+
+  fuel_oil:
+    factor_gj: 0.0404       # GJ/lt    (PROVISIONAL)
+    factor_co2: 0.0774      # tCO2eq/GJ (PROVISIONAL)
+
+  biomasa:
+    factor_gj: 15.0         # GJ/ton   (PROVISIONAL, muy variable por humedad)
+    factor_co2: 0.0         # biogénico: no suma al total fósil
+    biogenico: true
+
+  electricidad_comprada:
+    factor_gj: 0.0036       # GJ/kWh   (1 kWh = 0.0036 GJ, exacto)
+    factor_co2: 0.12        # tCO2eq/GJ (PROVISIONAL, depende de la red)
+
+# Respaldo para energéticos no listados: sin energía ni emisiones (no rompe).
+default:
+  factor_gj: 0.0
+  factor_co2: 0.0

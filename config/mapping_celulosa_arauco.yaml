@@ -1,0 +1,49 @@
+# Plantilla de mapeo GreenClaim — CELULOSA_Arauco_tipo (paso 2).
+#
+# Archivo real con particularidades manejadas DESDE la plantilla:
+#   - encabezado desplazado: la fila de columnas está en el índice 4 (header: 4)
+#   - una fila de UNIDADES justo bajo el encabezado → se descarta con skiprows
+#   - el gas natural llega partido en dos columnas de PI → se SUMAN
+#   - días de mantención vienen en 0 (se conservan como dato; el estado
+#     'pendiente' por valor 0 se decide en el paso 4, no aquí)
+#
+# Mapea `data/CELULOSA_Arauco_tipo.xlsx` (genéralo con make_sample_arauco.py).
+
+empresa: celulosa_arauco_tipo
+
+lectura:
+  sheet: 0
+  header: 4         # fila de encabezados (índice 0-based del archivo original)
+  skiprows: [5]     # descarta la fila de unidades bajo el encabezado
+
+identidad:
+  fecha: Fecha
+
+energeticos:
+  - energetico: gas_natural
+    tipo: fosil
+    unidad: Nm3
+    fuente: operativo
+    columnas: [GN Caldera 1, GN Caldera 2]   # componentes PI partidos → se suman
+    agregacion: sum
+
+  - energetico: diesel
+    tipo: fosil
+    unidad: lt
+    fuente: operativo
+    columnas: [Petroleo Diesel]
+    agregacion: sum
+
+  - energetico: biomasa
+    tipo: biogenico        # factor fósil 0 (se aplica en el paso 5)
+    unidad: ton
+    fuente: operativo
+    columnas: [Biomasa]
+    agregacion: sum
+
+  - energetico: electricidad_comprada
+    tipo: electricidad_red
+    unidad: kWh
+    fuente: operativo
+    columnas: [Energia Comprada]
+    agregacion: sum

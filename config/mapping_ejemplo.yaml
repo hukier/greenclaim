@@ -1,0 +1,47 @@
+# Plantilla de mapeo GreenClaim — EJEMPLO genérico (paso 2).
+#
+# Traduce las columnas crudas de un archivo de una empresa al modelo canónico.
+# Una plantilla describe UN archivo (un export). Como la entrada son dos
+# archivos separados (operativo y contable), normalmente habrá una plantilla
+# por archivo; cada energético declara su `fuente`.
+#
+# Esta plantilla mapea el archivo de demo `data/operativo_ejemplo.csv`.
+
+empresa: ejemplo_generico
+
+lectura:
+  sheet: 0        # hoja (índice o nombre); para CSV se ignora
+  header: 0       # índice 0-based de la fila de encabezados
+  # skiprows: [1] # opcional: filas extra a descartar (p. ej. fila de unidades)
+
+identidad:
+  fecha: fecha    # nombre de la columna de fecha en el archivo crudo
+
+# Lista de energéticos del NÚCLEO presentes en este archivo. Cada item:
+#   energetico: gas_natural | diesel | fuel_oil | biomasa | electricidad_comprada
+#   tipo:       fosil | biogenico | electricidad_red
+#   unidad:     unidad nativa (Nm3 / lt / ton / kWh)
+#   fuente:     operativo | contable
+#   columnas:   lista de columnas crudas; si hay varias se SUMAN fila a fila
+#   agregacion: sum | mean   (default sum) — cómo agregar al mes
+energeticos:
+  - energetico: gas_natural
+    tipo: fosil
+    unidad: Nm3
+    fuente: operativo
+    columnas: [gas_natural_nm3]
+    agregacion: sum
+
+  - energetico: diesel
+    tipo: fosil
+    unidad: lt
+    fuente: operativo
+    columnas: [diesel_lt]
+    agregacion: sum
+
+  - energetico: electricidad_comprada
+    tipo: electricidad_red
+    unidad: kWh
+    fuente: operativo
+    columnas: [electricidad_kwh]
+    agregacion: sum
